@@ -15,6 +15,8 @@ def app():
         'Please select which "WHY" examples you would like to see:',
         folder_names
     )
+    st.markdown("---")
+
 
     # Construct the directory path based on the selected option
     video_dir = os.path.join(video_folder, why_selection)
