@@ -4,18 +4,20 @@ import os
 def app():
     st.title("Taxonomy: 'Early Turn'")
 
-    why_selection = st.selectbox(
-        'Please select which "WHY" examples you would like to see:',
-        ('Oncoming Lane', 'Towards Kerb')
-    )
-
+    # Video folder path
     video_folder = "media/early_turn"
 
-    if why_selection == 'Oncoming Lane':
-        video_dir = os.path.join(video_folder, 'oncoming_lane')
+    # Get the list of folder names in video_folder
+    folder_names = [name for name in os.listdir(video_folder) if os.path.isdir(os.path.join(video_folder, name))]
 
-    elif why_selection == 'Towards Kerb':
-        video_dir = os.path.join(video_folder, 'towards_kerb')
+    # Display a select box for choosing the folder
+    why_selection = st.selectbox(
+        'Please select which "WHY" examples you would like to see:',
+        folder_names
+    )
+
+    # Construct the directory path based on the selected option
+    video_dir = os.path.join(video_folder, why_selection)
 
     # Get all video files in the selected directory
     video_files = os.listdir(video_dir)
@@ -27,3 +29,4 @@ def app():
             st.video(video_path)
     else:
         st.warning("No videos found in the selected directory.")
+
