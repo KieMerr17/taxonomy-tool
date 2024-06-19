@@ -1,13 +1,13 @@
 import streamlit as st
-from taxonomy import slow, speed
+from taxonomy import accelerate, early_turn
 
 # Sidebar
 st.sidebar.title("Taxonomy WHATS")
 
 # Dictionary to link page names to Taxonomy
 taxonomy = {
-    "Slow": slow,
-    "Speed": speed,
+    "Early Turn": early_turn,
+    "Accelerate": accelerate,
 }
 
 # Sidebar navigation
